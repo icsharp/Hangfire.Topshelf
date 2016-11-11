@@ -1,5 +1,4 @@
-﻿using Hangfire.Server;
-using System;
+﻿using System;
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -20,16 +19,7 @@ namespace Hangfire.Topshelf.Core
 
 			for (int i = 0; i < parameters.Length; i++)
 			{
-				var parameter = parameters[i];
-
-				if (parameter.ParameterType == typeof(PerformContext))
-				{
-					args[i] = Expression.Constant(null, typeof(PerformContext));
-				}
-				else
-				{
-					args[i] = Expression.Parameter(parameter.ParameterType);
-				}
+				args[i] = Expression.Default(parameters[i].ParameterType);
 			}
 
 			var x = Expression.Parameter(method.DeclaringType, "x");
