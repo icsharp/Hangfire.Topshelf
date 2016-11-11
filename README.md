@@ -179,9 +179,9 @@ public static IContainer UseAutofac(this IAppBuilder app, HttpConfiguration conf
 }
 ```
 
-## Register `RecurringJob` automatically using attribute `RecurringJobAttribute`
+## Register `RecurringJob` automatically
 
-- `RecurringJobAttribute`
+- using attribute `RecurringJobAttribute`
 
 ``` csharp
 [Serializable]
