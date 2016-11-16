@@ -206,33 +206,21 @@ public class RecurringJobAttribute : Attribute
 - Extension Method `UseRecurringJob`
 
 ```csharp
-public static IGlobalConfiguration UseRecurringJob(this IGlobalConfiguration configuration, params Type[] types)
+public static IAppBuilder UseRecurringJob(this IAppBuilder app, params Type[] types)
 {
-    return UseRecurringJob(configuration, () => types);
-}
+    if (types == null) throw new ArgumentNullException(nameof(types));
 
-public static IGlobalConfiguration UseRecurringJob(this IGlobalConfiguration configuration, Func<IEnumerable<Type>> typesProvider)
+    GlobalConfiguration.Configuration.UseRecurringJob(types);
+
+    return app;
+}
+public static IAppBuilder UseRecurringJob(this IAppBuilder app, Func<IEnumerable<Type>> typesProvider)
 {
     if (typesProvider == null) throw new ArgumentNullException(nameof(typesProvider));
 
-    IRecurringJobBuilder builder = new RecurringJobBuilder(new RecurringJobRegistry());
+    GlobalConfiguration.Configuration.UseRecurringJob(typesProvider);
 
-    builder.Build(typesProvider);
-
-    return configuration;
-}
-
-public static IGlobalConfiguration UseRecurringJob(this IGlobalConfiguration configuration, IContainer container)
-{
-    if (container == null) throw new ArgumentNullException(nameof(container));
-
-    var interfaceTypes = container.ComponentRegistry
-        .RegistrationsFor(new TypedService(typeof(IDependency)))
-        .Select(x => x.Activator)
-        .OfType<ReflectionActivator>()
-        .Select(x => x.LimitType.GetInterface($"I{x.LimitType.Name}"));
-
-    return UseRecurringJob(configuration, () => interfaceTypes);
+    return app;
 }
 
 ```
