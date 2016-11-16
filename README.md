@@ -181,28 +181,6 @@ public static IContainer UseAutofac(this IAppBuilder app, HttpConfiguration conf
 
 ## Register `RecurringJob` automatically
 
-- using attribute `RecurringJobAttribute`
-
-``` csharp
-[Serializable]
-[AttributeUsage(AttributeTargets.Method)]
-public class RecurringJobAttribute : Attribute
-{
-    public string Cron { get; private set; }
-    public TimeZoneInfo TimeZone { get; private set; }
-    public string Queue { get; private set; }
-    public bool Enabled { get; set; } = true;
-    public RecurringJobAttribute(string cron) : this(cron, TimeZoneInfo.Local) { }
-    public RecurringJobAttribute(string cron, TimeZoneInfo timeZone) : this(cron, timeZone, EnqueuedState.DefaultQueue) { }
-    public RecurringJobAttribute(string cron, TimeZoneInfo timeZone, string queue)
-    {
-        Cron = cron;
-        TimeZone = timeZone;
-        Queue = queue;
-    }
-}
-```
-
 - Extension Method `UseRecurringJob`
 
 ```csharp
@@ -246,7 +224,26 @@ public class RecurringJobService
         context.WriteLine($"{DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")} StaticTestJob Running ...");
     }
 }
+
+public interface ISampleService : IAppService
+{
+    /// <summary>
+    /// simple job test
+    /// </summary>
+    /// <param name="context"></param>
+    [RecurringJob("0 4 1 * *")]
+    [AutomaticRetry(Attempts = 3)]
+    [DisplayName("SimpleJobTest")]
+    [Queue("jobs")]
+    void SimpleJob(PerformContext context);
+}
+
 ```
+
+In app start, using extension method `UseRecurringJob` to assign the types targeted by `RecurringJobAttribute`:
+
+`GlobalConfiguration.Configuration.UseRecurringJob(typeof(RecurringJobService), typeof(ISampleService))`
+
 
 
 
