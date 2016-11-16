@@ -181,28 +181,6 @@ public static IContainer UseAutofac(this IAppBuilder app, HttpConfiguration conf
 
 ## Register `RecurringJob` automatically
 
-- Extension Method `UseRecurringJob`
-
-```csharp
-public static IAppBuilder UseRecurringJob(this IAppBuilder app, params Type[] types)
-{
-    if (types == null) throw new ArgumentNullException(nameof(types));
-
-    GlobalConfiguration.Configuration.UseRecurringJob(types);
-
-    return app;
-}
-public static IAppBuilder UseRecurringJob(this IAppBuilder app, Func<IEnumerable<Type>> typesProvider)
-{
-    if (typesProvider == null) throw new ArgumentNullException(nameof(typesProvider));
-
-    GlobalConfiguration.Configuration.UseRecurringJob(typesProvider);
-
-    return app;
-}
-
-```
-
 - Usage
 
 ```csharp
