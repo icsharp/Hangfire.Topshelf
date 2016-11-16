@@ -11,6 +11,7 @@ using Hangfire.Common;
 using Hangfire.Console;
 using Hangfire.Dashboard;
 using Hangfire.Logging;
+using Hangfire.RecurringJobExtensions;
 using Hangfire.Server;
 using Hangfire.SqlServer;
 using Owin;
@@ -113,34 +114,6 @@ namespace Hangfire.Topshelf.Core
 			return container;
 		}
 
-		/// <summary>
-		/// Build <see cref="RecurringJob"/> automatically within specified interface or class.
-		/// </summary>
-		/// <param name="configuration"><see cref="IGlobalConfiguration"/></param>
-		/// <param name="types">Specified interface or class</param>
-		/// <returns><see cref="IGlobalConfiguration"/></returns>
-		public static IGlobalConfiguration UseRecurringJob(this IGlobalConfiguration configuration, params Type[] types)
-		{
-			return UseRecurringJob(configuration, () => types);
-		}
-
-		/// <summary>
-		/// Build <see cref="RecurringJob"/> automatically within specified interface or class.
-		/// </summary>
-		/// <param name="configuration"><see cref="IGlobalConfiguration"/></param>
-		/// <param name="typesProvider">The provider to get specified interfaces or class.</param>
-		/// <returns><see cref="IGlobalConfiguration"/></returns>
-		public static IGlobalConfiguration UseRecurringJob(this IGlobalConfiguration configuration, Func<IEnumerable<Type>> typesProvider)
-		{
-			if (typesProvider == null) throw new ArgumentNullException(nameof(typesProvider));
-
-			IRecurringJobBuilder builder = new RecurringJobBuilder(new RecurringJobRegistry());
-
-			builder.Build(typesProvider);
-
-			return configuration;
-		}
-
 		public static IGlobalConfiguration UseRecurringJob(this IGlobalConfiguration configuration, IContainer container)
 		{
 			if (container == null) throw new ArgumentNullException(nameof(container));
@@ -151,7 +124,7 @@ namespace Hangfire.Topshelf.Core
 				.OfType<ReflectionActivator>()
 				.Select(x => x.LimitType.GetInterface($"I{x.LimitType.Name}"));
 
-			return UseRecurringJob(configuration, () => interfaceTypes);
+			return GlobalConfiguration.Configuration.UseRecurringJob(() => interfaceTypes);
 		}
 
 		public static IAppBuilder UseRecurringJob(this IAppBuilder app, IContainer container)

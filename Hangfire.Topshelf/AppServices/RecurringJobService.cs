@@ -1,8 +1,8 @@
-﻿using Hangfire.Console;
-using Hangfire.Server;
-using Hangfire.Topshelf.Core;
-using System;
+﻿using System;
 using System.ComponentModel;
+using Hangfire.Console;
+using Hangfire.RecurringJobExtensions;
+using Hangfire.Server;
 
 namespace Hangfire.Topshelf.AppServices
 {
