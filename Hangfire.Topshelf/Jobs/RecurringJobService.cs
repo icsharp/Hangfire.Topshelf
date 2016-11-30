@@ -4,7 +4,7 @@ using Hangfire.Console;
 using Hangfire.RecurringJobExtensions;
 using Hangfire.Server;
 
-namespace Hangfire.Topshelf.AppServices
+namespace Hangfire.Topshelf.Jobs
 {
 	public class RecurringJobService
 	{

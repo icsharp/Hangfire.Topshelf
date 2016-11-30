@@ -151,5 +151,14 @@ namespace Hangfire.Topshelf.Core
 
 			return app;
 		}
+
+		public static IAppBuilder UseRecurringJob(this IAppBuilder app, string jsonFile)
+		{
+			if (string.IsNullOrEmpty(jsonFile)) throw new ArgumentNullException(nameof(jsonFile));
+
+			GlobalConfiguration.Configuration.UseRecurringJob(jsonFile);
+
+			return app;
+		}
 	}
 }

@@ -2,6 +2,7 @@
 using System.Web.Http;
 using Hangfire.Dashboard;
 using Hangfire.Console;
+using Hangfire.Topshelf.Jobs;
 using Owin;
 using Swashbuckle.Application;
 
@@ -70,9 +71,11 @@ namespace Hangfire.Topshelf.Core
 
 			app.UseDashboardMetric();
 
-			app.UseRecurringJob(typeof(AppServices.RecurringJobService));
+			app.UseRecurringJob(typeof(RecurringJobService));
 
 			app.UseRecurringJob(container);
+
+			app.UseRecurringJob("recurringjob.json");
 		}
 
 	}

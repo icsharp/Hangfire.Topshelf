@@ -3,7 +3,7 @@ using System.Reflection;
 using Autofac;
 using Autofac.Core;
 using Hangfire.Logging;
-using Hangfire.Topshelf.AppServices;
+using Hangfire.Topshelf.Jobs;
 
 namespace Hangfire.Topshelf.Core
 {
@@ -64,7 +64,10 @@ namespace Hangfire.Topshelf.Core
 				.AsImplementedInterfaces();
 
 			//register speicified types here  
-			builder.Register(x => new RecurringJobService()); 
+			builder.Register(x => new RecurringJobService());
+			builder.Register(x => new MyJob1());
+			builder.Register(x => new MyJob2());
+			builder.Register(x => new LongRunningJob());
 		}
 	}
 }
