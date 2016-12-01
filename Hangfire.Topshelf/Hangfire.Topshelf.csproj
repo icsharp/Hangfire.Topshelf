@@ -60,8 +60,8 @@
       <HintPath>..\packages\Hangfire.Dashboard.Authorization.2.1.0\lib\net45\Hangfire.Dashboard.Authorization.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Hangfire.RecurringJobExtensions, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Hangfire.RecurringJobExtensions.1.1.0\lib\net45\Hangfire.RecurringJobExtensions.dll</HintPath>
+    <Reference Include="Hangfire.RecurringJobExtensions, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.RecurringJobExtensions.1.1.2\lib\net45\Hangfire.RecurringJobExtensions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Hangfire.SqlServer, Version=1.6.7.0, Culture=neutral, processorArchitecture=MSIL">
