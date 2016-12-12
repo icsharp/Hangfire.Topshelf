@@ -19,7 +19,7 @@ namespace HF.Samples.ServerNode
 				.CreateLogger();
 
 			Parser.Default.ParseArguments<NodeOptions>(args)
-				.WithNotParsed(_ => Console.WriteLine("Arguments configuration is error, you can view command line by type: --help"))
+				.WithNotParsed(_ => _logger.Info("Arguments configuration is error, you can view command line by type: --help"))
 				.WithParsed(opts =>
 				{
 					_logger.InfoFormat("Accepted args: {@opts}", opts);
@@ -29,6 +29,7 @@ namespace HF.Samples.ServerNode
 				});
 
 			_logger.Info("Press Enter to exit...");
+
 			Console.ReadLine();
 		}
 
