@@ -3,13 +3,18 @@
 
 	"dependencies": {
 		"NETStandard.Library": "1.6.0",
-		"System.ComponentModel.Primitives": "4.3.0"
+		"Hangfire.Samples.Framework": "1.0.0-*",
+		"Hangfire.Core": "1.6.7",
+		"HF.Samples.GoodsService": "1.0.0-*"
 	},
 
 	"frameworks": {
 		"netstandard1.6": {
 			"imports": "dnxcore50",
 			"dependencies": {
+
+				"System.ComponentModel.Primitives": "4.3.0",
+				"System.Threading.Thread": "4.0.0"
 			}
 		},
 		"net45": {}

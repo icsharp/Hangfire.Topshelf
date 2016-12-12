@@ -9,6 +9,9 @@ namespace HF.Samples.Consumer
     {
         public static void Main(string[] args)
         {
+			System.Threading.Thread.Sleep(1000);
+
+			Console.ReadKey();
         }
     }
 }
