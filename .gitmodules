@@ -1,0 +1,3 @@
+[submodule "Hangfire.Autofac"]
+	path = Hangfire.Autofac
+	url = https://github.com/icsharp/Hangfire.Autofac.git
