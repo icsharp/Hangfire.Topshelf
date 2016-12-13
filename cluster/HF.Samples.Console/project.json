@@ -5,6 +5,7 @@
 			"type": "platform"
 		},
 		"Hangfire": "1.6.7",
+		"HangFire.Autofac": "2.3.0-*",
 		"BundlerMinifier.Core": "2.2.306",
 		"Microsoft.ApplicationInsights.AspNetCore": "1.0.2",
 		"Microsoft.AspNetCore.Diagnostics": "1.1.0",
@@ -17,14 +18,18 @@
 		"Microsoft.AspNetCore.StaticFiles": "1.1.0",
 		"Microsoft.Extensions.Configuration.EnvironmentVariables": "1.1.0",
 		"Microsoft.Extensions.Configuration.Json": "1.1.0",
+		"Microsoft.Extensions.DependencyInjection": "1.1.0",
 		"Microsoft.Extensions.Logging": "1.1.0",
 		"Microsoft.Extensions.Logging.Console": "1.1.0",
 		"Microsoft.Extensions.Logging.Debug": "1.1.0",
 		"Microsoft.Extensions.Options.ConfigurationExtensions": "1.1.0",
-        "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.1.0",
-        "HF.Samples.GoodsService": "1.0.0-*",
-        "HF.Samples.OrderService": "1.0.0-*",
-        "HF.Samples.StorageService": "1.0.0-*"
+		"Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.1.0",
+		"Autofac": "4.2.1",
+		"Autofac.Extensions.DependencyInjection": "4.0.0",
+		"HF.Samples.GoodsService": "1.0.0-*",
+		"HF.Samples.OrderService": "1.0.0-*",
+					"HF.Samples.StorageService": "1.0.0-*",
+					"Hangfire.Samples.Framework": "1.0.0-*"
 	},
 
 	"tools": {
