@@ -2,7 +2,7 @@
   "profiles": {
     "HF.Samples.ServerNode": {
       "commandName": "Project",
-      "commandLineArgs": "node -i node1 -q default,order,storage"
+      "commandLineArgs": "nodeA -q order,storage"
     }
   }
 }

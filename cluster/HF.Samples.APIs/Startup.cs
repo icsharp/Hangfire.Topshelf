@@ -39,6 +39,15 @@ namespace HF.Samples.APIs
 
 			services.AddMvc();
 
+			var connectionString = Configuration.GetConnectionString("Hangfire");
+			GlobalConfiguration.Configuration.UseSqlServerStorage(connectionString);
+
+			//services.AddHangfire(x =>
+			//{
+			//	var connectionString = Configuration.GetConnectionString("Hangfire");
+			//	x.UseSqlServerStorage(connectionString);
+			//});
+
 			services.AddSwaggerGen();
 
 			var xmlPath = GetXmlCommentsPath();
@@ -57,12 +66,6 @@ namespace HF.Samples.APIs
 				options.IncludeXmlComments(xmlPath);
 
 				//options.DescribeAllEnumsAsStrings();
-			});
-
-			services.AddHangfire(x =>
-			{
-				var connectionString = Configuration.GetConnectionString("Hangfire");
-				x.UseSqlServerStorage(connectionString);
 			});
 		}
 		private string GetXmlCommentsPath()

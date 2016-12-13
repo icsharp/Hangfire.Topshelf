@@ -11,11 +11,13 @@
 			"version": "1.1.0"
 		},
 		"System.Runtime": "4.3.0",
+		"Autofac": "4.2.1",
+		"Hangfire": "1.6.7",
+		"HangFire.Autofac": "2.3.0-*",
 		"Serilog": "2.3.0",
 		"Serilog.Sinks.Literate": "2.0.0",
 		"Serilog.Sinks.RollingFile": "3.2.0",
 		"CommandLineParser": "2.1.1-beta",
-		"Hangfire": "1.6.7",
 		"HF.Samples.OrderService": "1.0.0-*",
 		"HF.Samples.StorageService": "1.0.0-*",
 		"Hangfire.Samples.Framework": "1.0.0-*"

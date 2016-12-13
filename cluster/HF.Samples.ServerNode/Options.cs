@@ -7,7 +7,7 @@ namespace HF.Samples.ServerNode
 {
 	public interface IOptions
 	{
-		[Option('i', "identifier", Required = true, HelpText = "The hangfire server specified node identifier name.")]
+		[Value(0, MetaName = "identifier", Required = true, HelpText = "The hangfire server specified node identifier name.")]
 		string Identifier { get; set; }
 
 		[Option('q', "queues", Default = "default", HelpText = "The assigned queues to hangfire server node.")]

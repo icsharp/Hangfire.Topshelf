@@ -28,7 +28,7 @@ namespace HF.Samples.StorageService.Impl
 
 			quantity--;
 
-			Logger.Info($"Reducing inventory successfully, quantity: {quantity}");
+			Logger.InfoFormat("Reducing inventory successfully, quantity: {quantity}", quantity);
 		}
 	}
 }

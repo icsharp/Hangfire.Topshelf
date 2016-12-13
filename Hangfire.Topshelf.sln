@@ -29,6 +29,13 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Hangfire.Samples.Framework"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HF.Samples.GoodsService", "cluster\HF.Samples.GoodsService\HF.Samples.GoodsService.xproj", "{611E917B-FBBB-4CB2-9464-E568F4272F90}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HangFire.Autofac", "Hangfire.Autofac\HangFire.Autofac\HangFire.Autofac.xproj", "{E187DFD9-90BC-4753-93BE-C1B018E06B67}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1152976E-0CB3-4A59-BE15-0E0F7142E11B}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +78,10 @@ Global
 		{611E917B-FBBB-4CB2-9464-E568F4272F90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{611E917B-FBBB-4CB2-9464-E568F4272F90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{611E917B-FBBB-4CB2-9464-E568F4272F90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E187DFD9-90BC-4753-93BE-C1B018E06B67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E187DFD9-90BC-4753-93BE-C1B018E06B67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E187DFD9-90BC-4753-93BE-C1B018E06B67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E187DFD9-90BC-4753-93BE-C1B018E06B67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,5 +98,6 @@ Global
 		{173B08DF-358C-4F4C-B259-A8A875C106AE} = {2FA1A6EC-9A42-4F81-8832-B9CB4BA1861A}
 		{14663383-706C-4042-A263-9F03C066A9BB} = {173B08DF-358C-4F4C-B259-A8A875C106AE}
 		{611E917B-FBBB-4CB2-9464-E568F4272F90} = {88F25016-C20E-4E4C-B655-B0A1D62E5234}
+		{E187DFD9-90BC-4753-93BE-C1B018E06B67} = {173B08DF-358C-4F4C-B259-A8A875C106AE}
 	EndGlobalSection
 EndGlobal

@@ -1,8 +1,14 @@
 ﻿using System;
+using System.Reflection;
+using Autofac;
 using CommandLine;
-using Hangfire;
 using Serilog;
+using Hangfire;
+using Hangfire.Samples.Framework;
 using Hangfire.Samples.Framework.Logging;
+using HF.Samples.GoodsService;
+using HF.Samples.OrderService;
+using HF.Samples.StorageService;
 
 namespace HF.Samples.ServerNode
 {
@@ -19,7 +25,7 @@ namespace HF.Samples.ServerNode
 				.CreateLogger();
 
 			Parser.Default.ParseArguments<NodeOptions>(args)
-				.WithNotParsed(_ => _logger.Info("Arguments configuration is error, you can view command line by type: --help"))
+				.WithNotParsed(_ => _logger.Info("Arguments configuration is empty, you can view command line by type: --help"))
 				.WithParsed(opts =>
 				{
 					_logger.InfoFormat("Accepted args: {@opts}", opts);
@@ -42,6 +48,8 @@ namespace HF.Samples.ServerNode
 				Queues = opts.Queues.Split(',')
 			};
 
+			UseAutofac();
+
 			GlobalConfiguration.Configuration.UseSqlServerStorage(@"Server=.\sqlexpress;Database=Hangfire;Trusted_Connection=True;");
 
 			using (new BackgroundJobServer(options))
@@ -56,6 +64,22 @@ namespace HF.Samples.ServerNode
 				}
 			}
 
+		}
+
+		private static void UseAutofac()
+		{
+			var builder = new ContainerBuilder();
+
+			builder.RegisterModule(new DelegateModule(() => new Assembly[]
+			{
+				typeof(IProductService).GetTypeInfo().Assembly,
+				typeof(IOrderService).GetTypeInfo().Assembly,
+				typeof(IInventoryService).GetTypeInfo().Assembly
+			}));
+
+			var container = builder.Build();
+
+			GlobalConfiguration.Configuration.UseAutofacActivator(container);
 		}
 	}
 }

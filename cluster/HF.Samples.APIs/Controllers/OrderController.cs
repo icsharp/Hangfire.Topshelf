@@ -22,6 +22,7 @@ namespace HF.Samples.APIs.Controllers
 		/// </summary>
 		/// <param name="productId"></param>
 		/// <returns></returns>
+		[Route("create")]
 		[HttpPost]
 		public IActionResult Create([FromBody]string productId)
 		{
