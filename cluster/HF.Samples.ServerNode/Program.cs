@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using System.Threading;
 using Autofac;
 using CommandLine;
 using Serilog;
@@ -10,11 +11,16 @@ using HF.Samples.GoodsService;
 using HF.Samples.OrderService;
 using HF.Samples.StorageService;
 
+
 namespace HF.Samples.ServerNode
 {
 	public class Program
 	{
 		private static ILog _logger = LogProvider.For<Program>();
+
+		private static ManualResetEvent _signal = null;
+
+		private static BackgroundJobServer _backgroundJobServer = null;
 
 		public static void Main(string[] args)
 		{
@@ -30,13 +36,23 @@ namespace HF.Samples.ServerNode
 				{
 					_logger.InfoFormat("Accepted args: {@opts}", opts);
 
+					_signal = new ManualResetEvent(false);
+
+					Console.CancelKeyPress += (sender, e) =>
+					{
+						e.Cancel = true;
+						_signal.Set();
+					};
+
 					//start hangfire server here
 					UseHangfireServer(opts);
 				});
 
-			_logger.Info("Press Enter to exit...");
+			_logger.Info("Press Enter Ctrl+C to exit...");
 
-			Console.ReadLine();
+			_signal?.WaitOne();
+
+			_backgroundJobServer?.Dispose();
 		}
 
 		private static void UseHangfireServer(NodeOptions opts)
@@ -52,18 +68,7 @@ namespace HF.Samples.ServerNode
 
 			GlobalConfiguration.Configuration.UseRedisStorage();
 
-			using (new BackgroundJobServer(options))
-			{
-				while (true)
-				{
-					var command = Console.ReadLine();
-					if (command == null || command.Equals("stop", StringComparison.OrdinalIgnoreCase))
-					{
-						break;
-					}
-				}
-			}
-
+			_backgroundJobServer = new BackgroundJobServer(options);
 		}
 
 		private static void UseAutofac()
