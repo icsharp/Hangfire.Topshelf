@@ -1,5 +1,6 @@
 ﻿using System;
 using Hangfire.Topshelf.Core;
+using Serilog;
 using Topshelf;
 
 namespace Hangfire.Topshelf
@@ -8,17 +9,21 @@ namespace Hangfire.Topshelf
 	{
 		static int Main(string[] args)
 		{
-			log4net.Config.XmlConfigurator.Configure();
+			Log.Logger = new LoggerConfiguration()
+				.MinimumLevel.Verbose()
+				.WriteTo.LiterateConsole()
+				.WriteTo.RollingFile("logs\\log-{Date}.txt")
+				.CreateLogger();
 
 			return (int)HostFactory.Run(x =>
 			{
 				x.RunAsLocalSystem();
 
-				x.SetServiceName(HangfireSettings.ServiceName);
-				x.SetDisplayName(HangfireSettings.ServiceDisplayName);
-				x.SetDescription(HangfireSettings.ServiceDescription);
+				x.SetServiceName(HangfireSettings.Instance.ServiceName);
+				x.SetDisplayName(HangfireSettings.Instance.ServiceDisplayName);
+				x.SetDescription(HangfireSettings.Instance.ServiceDescription);
 
-				x.UseOwin(baseAddress: HangfireSettings.ServiceAddress);
+				x.UseOwin(baseAddress: HangfireSettings.Instance.ServiceAddress);
 
 				x.SetStartTimeout(TimeSpan.FromMinutes(5));
 				//https://github.com/Topshelf/Topshelf/issues/165

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
-using Hangfire.Samples.Framework;
-using Hangfire.Samples.Framework.Logging;
+using Hangfire.Logging;
 
 namespace Hangfire.Topshelf.AppServices.Impl
 {

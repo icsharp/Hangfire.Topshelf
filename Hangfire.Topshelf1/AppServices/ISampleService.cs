@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
-using Hangfire.Server;
 using Hangfire.RecurringJobExtensions;
-using Hangfire.Samples.Framework;
+using Hangfire.Server;
+
 
 namespace Hangfire.Topshelf.AppServices
 {

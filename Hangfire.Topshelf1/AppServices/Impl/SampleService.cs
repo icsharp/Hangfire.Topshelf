@@ -2,7 +2,6 @@
 using System.Linq;
 using Hangfire.Server;
 using Hangfire.Console;
-using Hangfire.Samples.Framework;
 
 namespace Hangfire.Topshelf.AppServices.Impl
 {

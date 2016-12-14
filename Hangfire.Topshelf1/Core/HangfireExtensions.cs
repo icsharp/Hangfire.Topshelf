@@ -10,14 +10,13 @@ using Autofac.Integration.WebApi;
 using Hangfire.Common;
 using Hangfire.Console;
 using Hangfire.Dashboard;
+using Hangfire.Logging;
 using Hangfire.RecurringJobExtensions;
 using Hangfire.Server;
 using Hangfire.SqlServer;
 using Owin;
 using Topshelf;
 using Topshelf.HostConfigurators;
-using Hangfire.Samples.Framework;
-using Hangfire.Samples.Framework.Logging;
 
 namespace Hangfire.Topshelf.Core
 {

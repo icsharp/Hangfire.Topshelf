@@ -1,5 +1,4 @@
-﻿using Hangfire.Samples.Framework; 
-
+﻿
 namespace Hangfire.Topshelf.AppServices.Impl
 {
 	public class ProductService : BaseAppService, IProductService

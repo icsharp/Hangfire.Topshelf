@@ -2,9 +2,9 @@
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Hangfire.Logging;
 using Hangfire.Topshelf.AppServices;
 using Hangfire.Topshelf.Core;
-using Hangfire.Samples.Framework.Logging;
 
 namespace Hangfire.Topshelf.Apis
 {

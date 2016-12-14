@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Owin.Hosting;
 using Topshelf;
-using Hangfire.Samples.Framework.Logging;
+using Topshelf.Logging;
 
 namespace Hangfire.Topshelf.Core
 {
@@ -10,7 +10,7 @@ namespace Hangfire.Topshelf.Core
 	/// </summary>
 	public class Bootstrap : ServiceControl
 	{
-		private static readonly ILog _logger = LogProvider.For<Bootstrap>();
+		private readonly LogWriter _logger = HostLogger.Get(typeof(Bootstrap));
 		private IDisposable webApp;
 		public string Address { get; set; }
 		public bool Start(HostControl hostControl)
@@ -22,7 +22,7 @@ namespace Hangfire.Topshelf.Core
 			}
 			catch (Exception ex)
 			{
-				_logger.ErrorException("Topshelf starting occured errors.", ex);
+				_logger.Error($"Topshelf starting occured errors:{ex.ToString()}");
 				return false;
 			}
 
@@ -37,7 +37,7 @@ namespace Hangfire.Topshelf.Core
 			}
 			catch (Exception ex)
 			{
-				_logger.ErrorException($"Topshelf stopping occured errors.", ex);
+				_logger.Error($"Topshelf stopping occured errors:{ex.ToString()}");
 				return false;
 			}
 

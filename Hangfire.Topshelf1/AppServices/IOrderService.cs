@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using Hangfire.Samples.Framework;	   
 
 namespace Hangfire.Topshelf.AppServices
 {

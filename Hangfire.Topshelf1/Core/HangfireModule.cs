@@ -2,9 +2,8 @@
 using System.Reflection;
 using Autofac;
 using Autofac.Core;
+using Hangfire.Logging;
 using Hangfire.Topshelf.Jobs;
-using Hangfire.Samples.Framework;
-using Hangfire.Samples.Framework.Logging;
 
 namespace Hangfire.Topshelf.Core
 {

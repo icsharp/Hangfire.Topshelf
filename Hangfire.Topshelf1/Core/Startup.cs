@@ -30,7 +30,7 @@ namespace Hangfire.Topshelf.Core
 
 			var queues = new[] { "default", "apis", "jobs" };
 
-			app.UseDatabaseStorage(HangfireSettings.Instance.HangfireDbConnectionString)
+			app.UseDatabaseStorage(HangfireSettings.HangfireDbConnectionString)
 			   .UseMsmq(@".\private$\hangfire-{0}", queues)
 			   .UseConsole();
 
@@ -46,7 +46,7 @@ namespace Hangfire.Topshelf.Core
 			});
 			var options = new DashboardOptions
 			{
-				AppPath = HangfireSettings.Instance.AppWebSite,
+				AppPath = HangfireSettings.AppWebSite,
 				AuthorizationFilters = new[]
 				{
 					new BasicAuthAuthorizationFilter ( new BasicAuthAuthorizationFilterOptions
@@ -58,9 +58,9 @@ namespace Hangfire.Topshelf.Core
 						{
 							new BasicAuthAuthorizationUser
 							{
-								Login = HangfireSettings.Instance.LoginUser,
+								Login = HangfireSettings.LoginUser,
 								// Password as plain text
-								PasswordClear = HangfireSettings.Instance.LoginPwd
+								PasswordClear = HangfireSettings.LoginPwd
 							}
 
 						}
