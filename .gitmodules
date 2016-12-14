@@ -1,3 +1,6 @@
 [submodule "Hangfire.Autofac"]
 	path = Hangfire.Autofac
 	url = https://github.com/icsharp/Hangfire.Autofac.git
+[submodule "Hangfire.RecurringJobExtensions"]
+	path = Hangfire.RecurringJobExtensions
+	url = https://github.com/icsharp/Hangfire.RecurringJobExtensions.git
