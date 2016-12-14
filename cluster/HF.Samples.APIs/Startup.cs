@@ -39,14 +39,8 @@ namespace HF.Samples.APIs
 
 			services.AddMvc();
 
-			var connectionString = Configuration.GetConnectionString("Hangfire");
-			GlobalConfiguration.Configuration.UseSqlServerStorage(connectionString);
-
-			//services.AddHangfire(x =>
-			//{
-			//	var connectionString = Configuration.GetConnectionString("Hangfire");
-			//	x.UseSqlServerStorage(connectionString);
-			//});
+			var connectionString = Configuration.GetConnectionString("hangfire.redis");
+			GlobalConfiguration.Configuration.UseRedisStorage(connectionString);
 
 			services.AddSwaggerGen();
 

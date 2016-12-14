@@ -4,7 +4,9 @@
 			"version": "1.1.0",
 			"type": "platform"
 		},
-		"Hangfire": "1.6.7",
+		"Hangfire.Core": "1.6.7",
+		"Hangfire.AspNetCore": "1.6.7",
+		"HangFire.Redis.StackExchange": "1.6.7.7",
 		"HangFire.Autofac": "2.3.0-*",
 		"BundlerMinifier.Core": "2.2.306",
 		"Microsoft.ApplicationInsights.AspNetCore": "1.0.2",
@@ -28,8 +30,8 @@
 		"Autofac.Extensions.DependencyInjection": "4.0.0",
 		"HF.Samples.GoodsService": "1.0.0-*",
 		"HF.Samples.OrderService": "1.0.0-*",
-					"HF.Samples.StorageService": "1.0.0-*",
-					"Hangfire.Samples.Framework": "1.0.0-*"
+		"HF.Samples.StorageService": "1.0.0-*",
+		"Hangfire.Samples.Framework": "1.0.0-*"
 	},
 
 	"tools": {

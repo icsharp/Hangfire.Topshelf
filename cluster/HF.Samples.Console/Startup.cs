@@ -45,8 +45,8 @@ namespace HF.Samples.Console
 
 			services.AddHangfire(x =>
 			{
-				var connectionString = Configuration.GetConnectionString("Hangfire");
-				x.UseSqlServerStorage(connectionString);
+				var connectionString = Configuration.GetConnectionString("hangfire.redis");
+				x.UseRedisStorage(connectionString);
 			});
 
 			return RegisterAutofac(services);

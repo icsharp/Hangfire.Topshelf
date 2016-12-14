@@ -50,7 +50,7 @@ namespace HF.Samples.ServerNode
 
 			UseAutofac();
 
-			GlobalConfiguration.Configuration.UseSqlServerStorage(@"Server=.\sqlexpress;Database=Hangfire;Trusted_Connection=True;");
+			GlobalConfiguration.Configuration.UseRedisStorage();
 
 			using (new BackgroundJobServer(options))
 			{
