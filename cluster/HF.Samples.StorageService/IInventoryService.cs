@@ -13,7 +13,7 @@ namespace HF.Samples.StorageService
 		[DisplayName("Reducing inventory when order created, orderId:{0}")]
 		[Queue("storage")]
 		[DisableConcurrentExecution(300)]
-		[AutomaticRetry(Attempts = 1)]
+		[AutomaticRetry(Attempts = 0)]
 		void Reduce(string productId);
 	}
 }

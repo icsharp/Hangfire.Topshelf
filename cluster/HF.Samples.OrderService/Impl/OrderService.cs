@@ -23,7 +23,7 @@ namespace HF.Samples.OrderService.Impl
 
 			int orderId = new Random().Next();
 
-			Logger.Info("create order successfully.");
+			Logger.InfoFormat("create order by productId: {0} successfully.", productId);
 		}
 	}
 }

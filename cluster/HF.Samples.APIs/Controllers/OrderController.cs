@@ -33,7 +33,7 @@ namespace HF.Samples.APIs.Controllers
 
 			BackgroundJob.ContinueWith<IInventoryService>(jobId, x => x.Reduce(productId));
 
-			return Ok(new { Status = 1, Message = "Enqueued successfully." });
+			return Ok(new { Status = 1, Message = $"Enqueued successfully, ProductId->{productId}" });
 		}
 	}
 }
