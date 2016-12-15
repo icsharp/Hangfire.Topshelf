@@ -1,5 +1,7 @@
 # Hangfire.Topshelf
 
+[![Build status](https://ci.appveyor.com/api/projects/status/5s9ujdp48l3w0o8i?svg=true)](https://ci.appveyor.com/project/icsharp/hangfire-topshelf)
+
 Samples as below:
 
 ## Host [Hangfire](https://github.com/HangfireIO/Hangfire) server in windows service using [Topshelf](https://github.com/Topshelf/Topshelf)
@@ -89,7 +91,7 @@ static int Main(string[] args)
 
 ## Using IoC with [Autofac](https://github.com/autofac/Autofac)
 
-- Register components using `Autofac.Module` 
+- Register components using `Autofac.Module`
 
 ```csharp
 /// <summary>
@@ -148,8 +150,8 @@ public class HangfireModule : Autofac.Module
             .Where(t => typeof(IDependency).IsAssignableFrom(t) && t != typeof(IDependency) && !t.IsInterface)
             .AsImplementedInterfaces();
 
-        //register speicified types here  
-        builder.Register(x => new RecurringJobService()); 
+        //register speicified types here
+        builder.Register(x => new RecurringJobService());
     }
 }
 ```
