@@ -12,6 +12,7 @@
 		"Hangfire.Core": "1.6.7",
 		"Hangfire.Console": "1.1.5",
 		"Hangfire.Dashboard.Authorization": "2.1.0",
+		"HangFire.Redis.StackExchange": "1.6.7.7",
 		"Hangfire.SqlServer": "1.6.7",
 		"Hangfire.SqlServer.MSMQ": "1.6.7",
 		"Microsoft.AspNet.WebApi.Owin": "5.2.3",
@@ -35,12 +36,13 @@
 	},
 	"buildOptions": {
 		"emitEntryPoint": true,
-        "copyToOutput": [ "appsettings.json", "recurringjob.json" ],
-        "xmlDoc": true
+		"copyToOutput": [ "appsettings.json", "recurringjob.json" ],
+		"xmlDoc": true
 	},
 	"frameworks": {
 		"net452": {
 			"frameworkAssemblies": {
+				"System.Data": "4.0.0.0",
 				"System.Messaging": "4.0.0.0",
 				"System.Xml": "4.0.0.0"
 			}

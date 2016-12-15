@@ -42,11 +42,11 @@ namespace Hangfire.Topshelf.Core
 			return configurator;
 		}
 
-		public static IGlobalConfiguration<SqlServerStorage> UseDatabaseStorage(this IAppBuilder app, string nameOrConnectionString)
+		public static IGlobalConfiguration<TStorage> UseStorage<TStorage>(this IAppBuilder app, TStorage storage) where TStorage : JobStorage
 		{
-			if (string.IsNullOrEmpty(nameOrConnectionString)) throw new ArgumentNullException(nameof(nameOrConnectionString));
+			if (storage == null) throw new ArgumentNullException(nameof(storage));
 
-			return GlobalConfiguration.Configuration.UseSqlServerStorage(nameOrConnectionString);
+			return GlobalConfiguration.Configuration.UseStorage(storage);
 		}
 
 		public static IGlobalConfiguration<SqlServerStorage> UseMsmq(this IGlobalConfiguration<SqlServerStorage> configuration, string pathPattern, params string[] queues)

@@ -30,9 +30,14 @@ namespace Hangfire.Topshelf.Core
 
 			var queues = new[] { "default", "apis", "jobs" };
 
-			app.UseDatabaseStorage(HangfireSettings.Instance.HangfireDbConnectionString)
+#if DEBUG
+			app.UseStorage(new Hangfire.Redis.RedisStorage(HangfireSettings.Instance.HangfireRedisConnectionString))
+		   .UseConsole();
+#else
+			app.UseStorage(new Hangfire.SqlServer.SqlServerStorage(HangfireSettings.Instance.HangfireSqlserverConnectionString))
 			   .UseMsmq(@".\private$\hangfire-{0}", queues)
 			   .UseConsole();
+#endif
 
 			//global hangfire filters
 			app.UseHangfireFilters(new AutomaticRetryAttribute { Attempts = 0 });

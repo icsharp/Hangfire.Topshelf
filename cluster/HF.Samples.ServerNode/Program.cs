@@ -18,7 +18,7 @@ namespace HF.Samples.ServerNode
 	{
 		private static ILog _logger = LogProvider.For<Program>();
 
-		private static ManualResetEvent _signal = null;
+		private static ManualResetEvent _exit = null;
 
 		private static BackgroundJobServer _backgroundJobServer = null;
 
@@ -36,21 +36,26 @@ namespace HF.Samples.ServerNode
 				{
 					_logger.InfoFormat("Accepted args: {@opts}", opts);
 
-					_signal = new ManualResetEvent(false);
+					_exit = new ManualResetEvent(false);
 
 					Console.CancelKeyPress += (sender, e) =>
 					{
+						if (e.SpecialKey == ConsoleSpecialKey.ControlBreak)
+						{
+							_logger.Error("Control+Break detected, terminating service (not cleanly, use Control+C to exit cleanly)");
+							return;
+						}
+
 						e.Cancel = true;
-						_signal.Set();
+
+						_exit.Set();
 					};
 
 					//start hangfire server here
 					UseHangfireServer(opts);
 				});
 
-			_logger.Info("Press Enter Ctrl+C to exit...");
-
-			_signal?.WaitOne();
+			_exit?.WaitOne();
 
 			_backgroundJobServer?.Dispose();
 		}
@@ -69,6 +74,8 @@ namespace HF.Samples.ServerNode
 			GlobalConfiguration.Configuration.UseRedisStorage();
 
 			_backgroundJobServer = new BackgroundJobServer(options);
+
+			_logger.InfoFormat("The hangfire server {0} [queues: {1}, workercount: {2}] is now running, press Control+C to exit.", opts.Identifier, opts.Queues, opts.WorkerCount);
 		}
 
 		private static void UseAutofac()

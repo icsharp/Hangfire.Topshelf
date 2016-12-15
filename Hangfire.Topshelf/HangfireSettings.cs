@@ -52,8 +52,13 @@ namespace Hangfire.Topshelf
 		public string LoginPwd => Configuration["hangfire.login.pwd"];
 
 		/// <summary>
-		/// Hangfire Db ConnectionString
+		/// Hangfire sql server connectionstring
 		/// </summary>
-		public string HangfireDbConnectionString => Configuration.GetConnectionString("hangfire.sqlserver");
+		public string HangfireSqlserverConnectionString => Configuration.GetConnectionString("hangfire.sqlserver");
+
+		/// <summary>
+		///  Hangfire redis server connectionstring
+		/// </summary>
+		public string HangfireRedisConnectionString => Configuration.GetConnectionString("hangfire.redis");
 	}
 }
