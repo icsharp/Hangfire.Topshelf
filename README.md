@@ -4,7 +4,7 @@
 
 To initialize this repo, you need to run git command `git submodule update --init --recursive` after you clone the master repo.
 
-Samples as below:
+## Samples as below
 
 ## Host [Hangfire](https://github.com/HangfireIO/Hangfire) server in windows service using [Topshelf](https://github.com/Topshelf/Topshelf)
 
@@ -225,6 +225,16 @@ public interface ISampleService : IAppService
 In app start, using extension method `UseRecurringJob` to assign the types targeted by `RecurringJobAttribute`:
 
 `GlobalConfiguration.Configuration.UseRecurringJob(typeof(RecurringJobService), typeof(ISampleService))`
+
+## Architecture
+
+### Monolithic
+
+![Monolithic](monolithic.png)
+
+### Cluster
+
+![Cluster](cluster.png)
 
 
 
