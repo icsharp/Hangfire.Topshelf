@@ -4,7 +4,7 @@
 
 To initialize this repo, you need to run git command `git submodule update --init --recursive` after you clone the master repo.
 
-## Samples as below
+Samples as below:
 
 ## Host [Hangfire](https://github.com/HangfireIO/Hangfire) server in windows service using [Topshelf](https://github.com/Topshelf/Topshelf)
 
