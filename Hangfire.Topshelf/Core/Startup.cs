@@ -31,12 +31,13 @@ namespace Hangfire.Topshelf.Core
 			var queues = new[] { "default", "apis", "jobs" };
 
 #if DEBUG
-			app.UseStorage(new Hangfire.Redis.RedisStorage(HangfireSettings.Instance.HangfireRedisConnectionString))
-		   .UseConsole();
-#else
 			app.UseStorage(new Hangfire.SqlServer.SqlServerStorage(HangfireSettings.Instance.HangfireSqlserverConnectionString))
-			   .UseMsmq(@".\private$\hangfire-{0}", queues)
+			   .UseMsmq(@".\private$\hangfire-{0}", queues)	
 			   .UseConsole();
+#else
+			app.UseStorage(new Hangfire.Redis.RedisStorage(HangfireSettings.Instance.HangfireRedisConnectionString))
+			   .UseConsole();
+			//it seems a bug that progress bar in Hangfire.Console cannot dispaly for a long time when using redis storage.
 #endif
 
 			//global hangfire filters
