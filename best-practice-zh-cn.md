@@ -130,7 +130,7 @@ BackgroundJob.ContinueWith(
 
 ## Hangfire扩展
 
-重点说一下上面提到的第8点，`Hangfire扩展性`，大家可以参考 [这里](http://http://hangfire.io/extensions.html)，有几个扩展是很实用的.
+重点说一下上面提到的第8点，`Hangfire扩展性`，大家可以参考 [这里](http://hangfire.io/extensions.html)，有几个扩展是很实用的.
 
 ### Hangfire Dashborad日志查看
 
