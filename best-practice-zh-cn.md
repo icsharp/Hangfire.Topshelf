@@ -76,7 +76,7 @@ var jobId = BackgroundJob.Schedule(
 
 #### 定时任务执行(Recurring jobs)
 
-定时（定时）任务代表可以重复性执行多次，支持`CRON`表示：
+定时（循环）任务代表可以重复性执行多次，支持`CRON`表达式：
 
 ```csharp
 RecurringJob.AddOrUpdate(
@@ -118,9 +118,9 @@ BackgroundJob.ContinueWith(
 
 - 支持任务取消
 
-- 支持按指定队列处理任务
+- 支持按指定`Job Queue`处理任务
 
-- 服务器端工作线程可控
+- 服务器端工作线程可控，即job执行并发数控制
 
 - 分布式部署，支持高可用
 
