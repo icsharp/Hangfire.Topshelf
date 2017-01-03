@@ -31,7 +31,7 @@
 		"Serilog": "2.3.0",
 		"Serilog.Sinks.Literate": "2.0.0",
 		"Serilog.Sinks.RollingFile": "3.2.0",
-		"Hangfire.RecurringJobExtensions": "1.1.3-*",
+		"Hangfire.RecurringJobExtensions": "1.1.4-*",
 		"Hangfire.Samples.Framework": "1.0.0-*"
 	},
 	"buildOptions": {
